@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.1 -->
+<interface>
+  <requires lib="gtk+" version="3.20"/>
+  <object class="GtkWindow" id="redeliste_org">
+    <property name="name">Redeliste Org</property>
+    <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Redeliste Organizer</property>
+    <property name="resizable">False</property>
+    <property name="icon">redeliste.png</property>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkMenuBar" id="menubar">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkMenuItem" id="einstellung">
+                <property name="name">Einstellung</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">_Einstellung</property>
+                <property name="use_underline">True</property>
+                <child type="submenu">
+                  <object class="GtkMenu">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkMenuItem" id="Quotierung">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">_Quotierung</property>
+                        <property name="use_underline">True</property>
+                        <child type="submenu">
+                          <object class="GtkMenu">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <child>
+                              <object class="GtkCheckMenuItem" id="geschlecht">
+                                <property name="name">geschlecht</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="tooltip_text" translatable="yes">Aktiviert Quotierung nach Geschlecht. Zusätzlich zum namen müssen "f" oder "m" angegeben werden.</property>
+                                <property name="label" translatable="yes">Nach _Geschlecht</property>
+                                <property name="use_underline">True</property>
+                                <signal name="toggled" handler="on_geschlecht_toggled" swapped="no"/>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkCheckMenuItem" id="erstredner">
+                                <property name="name">geschlecht</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="tooltip_text" translatable="yes">Aktiviert Quotierung nach Erstredner. Diese werden vorgezogen.</property>
+                                <property name="label" translatable="yes">Nach _Erstredner</property>
+                                <property name="use_underline">True</property>
+                                <signal name="toggled" handler="on_erstredner_toggled" swapped="no"/>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkCheckMenuItem" id="redezeit">
+                        <property name="name">redezeit</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">_Redezeit anzeigen</property>
+                        <property name="use_underline">True</property>
+                        <property name="active">True</property>
+                        <signal name="toggled" handler="on_redezeit_toggled" swapped="no"/>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkMenuItem" id="Info">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_markup" translatable="yes">Redemeldungen durch Eingabe des Names entgegennehmen. 
+Unten kann die länge der Redezeitbegränzung eingestellt werden.
+
+In den Einstellungen können sowohl Erstredner-, als auch Geschlechterquotierung zugeschaltet werden. Bei Geschlechterquotierung ist darauf zu achten, nach dem Namen einen Geschlechts Tag ("f" oder "m") anzugeben.
+
+Geschäftsordnungsanträge können durch das kürzel "go" nach dem Namen Priorisiert werden.
+
+Shortcuts:
+ &lt;i&gt;STRG+N&lt;/i&gt;: Nächster
+&lt;i&gt;STRG+L&lt;/i&gt;: Alle Namen löschen
+&lt;i&gt;STRG+S&lt;/i&gt;: Start/ Reset Timer</property>
+                <property name="label" translatable="yes">_Info</property>
+                <property name="use_underline">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkLabel" id="liste_org">
+                <property name="name">liste_org</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="valign">start</property>
+                <property name="margin_left">10</property>
+                <property name="margin_right">10</property>
+                <attributes>
+                  <attribute name="scale" value="2"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="liste_org2">
+                <property name="name">liste_org2</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="valign">start</property>
+                <property name="margin_left">10</property>
+                <property name="margin_right">10</property>
+                <attributes>
+                  <attribute name="scale" value="2"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="padding">12</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkLabel" id="watch_org">
+                    <property name="name">watch_org</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">end</property>
+                    <property name="valign">start</property>
+                    <property name="margin_left">10</property>
+                    <property name="margin_right">10</property>
+                    <property name="justify">right</property>
+                    <attributes>
+                      <attribute name="scale" value="2"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="quotierung_anzeige">
+                    <property name="name">quotierung_anzeige</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">end</property>
+                    <property name="valign">end</property>
+                    <property name="justify">right</property>
+                    <attributes>
+                      <attribute name="scale" value="2"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="pack_type">end</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="pack_type">end</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkEntry" id="entry">
+                <property name="name">entry</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="has_focus">True</property>
+                <signal name="activate" handler="on_entry_activate" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="enter_button">
+                <property name="label" translatable="yes">&gt;&gt;</property>
+                <property name="name">enter_button</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="tooltip_markup" translatable="yes">&lt;i&gt;ENTER&lt;/i&gt;
+Persnon eintragen</property>
+                <signal name="clicked" handler="on_enter_button_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="pack_type">end</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkButton" id="next">
+                <property name="label" translatable="yes">Nächster</property>
+                <property name="name">next</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="tooltip_markup" translatable="yes">&lt;i&gt;CTRL+N&lt;/i&gt;</property>
+                <signal name="clicked" handler="on_next_clicked" swapped="no"/>
+                <accelerator key="n" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="del_all">
+                <property name="label" translatable="yes">Alle Namen von der Liste löschen</property>
+                <property name="name">del_all</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="tooltip_markup" translatable="yes">&lt;i&gt;CTRL+L&lt;/i&gt;
+Löscht alle Namen von der Liste, bspw. bei einem Abbruch der Debatte.</property>
+                <signal name="clicked" handler="on_del_all_clicked" swapped="no"/>
+                <accelerator key="l" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="startwatch">
+                <property name="label" translatable="yes">Start/ Reset</property>
+                <property name="name">startwatch</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="tooltip_markup" translatable="yes">&lt;i&gt;CTRL+S&lt;/i&gt;</property>
+                <signal name="clicked" handler="on_startwatch_clicked" swapped="no"/>
+                <accelerator key="s" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Redezeit:</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkComboBoxText" id="redezeit_länge">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="active">3</property>
+            <property name="tearoff_title" translatable="yes">ökh</property>
+            <property name="button_sensitivity">on</property>
+            <property name="has_entry">True</property>
+            <items>
+              <item id="1" translatable="yes">1 Minute</item>
+              <item id="2" translatable="yes">2 Minuten</item>
+              <item id="3" translatable="yes">3 Minuten</item>
+              <item id="5" translatable="yes">5 Minuten</item>
+              <item id="8" translatable="yes">8 MInuten</item>
+              <item id="10" translatable="yes">10 Mnuten</item>
+              <item id="15" translatable="yes">15 Minuten</item>
+              <item id="30" translatable="yes">30 Minuten</item>
+            </items>
+            <signal name="changed" handler="on_redezeit_länge_changed" swapped="no"/>
+            <child internal-child="entry">
+              <object class="GtkEntry">
+                <property name="can_focus">False</property>
+                <property name="editable">False</property>
+                <property name="text" translatable="yes">5 Minuten</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">5</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="redeliste">
+    <property name="name">redeliste</property>
+    <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Redeliste</property>
+    <property name="icon">redeliste.png</property>
+    <property name="attached_to">redeliste_org</property>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="spacing">100</property>
+        <child>
+          <object class="GtkLabel" id="liste_beam">
+            <property name="name">liste_beam</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">start</property>
+            <property name="valign">start</property>
+            <property name="margin_left">35</property>
+            <property name="margin_top">35</property>
+            <property name="margin_bottom">35</property>
+            <attributes>
+              <attribute name="weight" value="bold"/>
+              <attribute name="scale" value="8"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkLabel" id="watch">
+                <property name="name">watch</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="valign">start</property>
+                <property name="margin_right">35</property>
+                <property name="margin_top">35</property>
+                <property name="margin_bottom">35</property>
+                <property name="justify">right</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                  <attribute name="scale" value="8"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="quotierung2">
+                <property name="name">quotierung2</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="valign">end</property>
+                <property name="margin_right">35</property>
+                <property name="margin_bottom">35</property>
+                <property name="justify">right</property>
+                <attributes>
+                  <attribute name="scale" value="5"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="pack_type">end</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
