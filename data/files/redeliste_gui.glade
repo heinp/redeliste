@@ -375,6 +375,9 @@ einen &lt;b&gt;Geschlechtstag&lt;/b&gt; ("&lt;b&gt;f&lt;/b&gt;" oder "&lt;b&gt;m
 &lt;b&gt;Geschäftsordnungsanträge&lt;/b&gt; können durch das kürzel "&lt;b&gt;go&lt;/b&gt;" nach
 dem Namen Priorisiert werden.
 
+Redner können von der Redeliste &lt;b&gt;gestrichen&lt;/b&gt; werden. Dafür
+ein "&lt;b&gt;-&lt;/b&gt;" vor dem namen eingeben.
+
 &lt;b&gt;Shortcuts&lt;/b&gt;:
  &lt;i&gt;STRG+N&lt;/i&gt;   Nächster
 &lt;i&gt;STRG+L&lt;/i&gt;     Alle Namen löschen
