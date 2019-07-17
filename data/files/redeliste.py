@@ -142,9 +142,8 @@ def new_name(name):
 		# print error to organizer if not found
 		except ValueError:
 			t = label_quotierung2.get_text()
-			t = f"'{name}' nicht in Liste\n" + t
+			t = "'{}' nicht in Liste\n".format(name) + t
 			label_quotierung.set_text(t)
-			print("lel")
 			return
 
 	# catch GO-Anträge, prioritize them whith some Tricks
