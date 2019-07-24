@@ -3,7 +3,7 @@ Tool zu Verwaltung einer Redeliste bei größeren Konferenzen.
 
 ## Getting Started
 ### Voraussetzungen
-Das Tool wurde in python3 geschrieben, empfohlen ist pyhton > 3.3. Außerdem wird auf die GTK Bibliothek zurück gegriffen, die installiert sein muss.
+Das Tool wurde in python3 geschrieben, empfohlen ist Python > 3.3. Außerdem wird auf die GTK Bibliothek zurück gegriffen, die installiert sein muss.
 Die Installationsdatei orientiert sich an den Dateistrukturen von Debian, mit etwas Glück funktioniert sie aber auch in anderen Umgebungen.
 
 ### Installation
