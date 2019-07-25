@@ -108,6 +108,8 @@ class Handler:
 		show_liste()
 	def on_geschlecht_toggled(self, button):
 		show_liste()
+	def on_vielredner_toggled(self, button):
+		show_liste()
 
 
 # get active redezeit length using some dirty hack
@@ -147,12 +149,12 @@ def new_name(name):
 			return
 
 	# catch GO-Anträge, prioritize them whith some Tricks
-	if name[-3:] == " go":
+	elif name[-3:] == " go":
 		liste.insert(1, ["<span color='red'>"+shorten(name[:-3]) + " GO</span>", "go", False])
 		liste.insert(2, ["<span color='red'>Gegenrede GO</span>", "geg", False])
 		 	
 	else:
-		# give male gender tag if no gender tag is given, so explecit
+		# give male gender tag if no gender tag is given, so explicit
 		# females are preferred
 		if name[-2:] != " m" and shorten(name[-2:]) != " f":
 			g = "m"
@@ -190,6 +192,7 @@ def quoten_sort(liste):
 	# get info if quotation is wished
 	geschlecht = builder.get_object("geschlecht").get_active()
 	erstredner = builder.get_object("erstredner").get_active()
+	vielredner = builder.get_object("vielredner").get_active()
 	
 	if geschlecht:
 		# kinda bubble sort to an alternating list accepting the active
@@ -208,7 +211,10 @@ def quoten_sort(liste):
 	# ZEEZZEZE -> ZEEEEZZZ
 	if erstredner:
 		liste[1:] = sorted(liste[1:], key=itemgetter(2))
-							
+
+	elif vielredner:
+		liste[1:] = sorted(liste[1:], key=lambda x: schon_gesprochen.count(x[0]))
+		
 	return liste
 
 
