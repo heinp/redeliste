@@ -207,14 +207,15 @@ def quoten_sort(liste):
 					liste[i+2] = liste[i+1]
 					liste[i+1] = temp
 		
-	# sort preffering erstredners, accepting active speaker like this:
+	# sort prefering erstredners, accepting active speaker like this:
 	# ZEEZZEZE -> ZEEEEZZZ
 	if erstredner:
 		liste[1:] = sorted(liste[1:], key=itemgetter(2))
 
+	# sort for count of utterances
 	elif vielredner:
 		liste[1:] = sorted(liste[1:], key=lambda x: schon_gesprochen.count(x[0]))
-		
+
 	return liste
 
 
@@ -230,8 +231,9 @@ def gendertag(person):
 
 # set tag telling if erstredner for show_liste()
 def rednertag(person):
-	if person[2] and builder.get_object("erstredner").get_active():
-		return " ②"
+	global schon_gesprochen
+	if builder.get_object("erstredner").get_active() or builder.get_object("vielredner").get_active():
+		return " [{}]".format(schon_gesprochen.count(person[0]))
 	else:
 		return ""
 
@@ -265,7 +267,7 @@ def show_liste():
 				org_text[i] += "\n"
 			try:
 				# add how many times this person has already spoken
-				org_text[i] += liste[j+10*i][0] + " [" + str(schon_gesprochen.count(liste[j+10*i][0])) + "]" + gendertag(liste[j+10*i]) + rednertag(liste[j+10*i])
+				org_text[i] += liste[j+10*i][0] + gendertag(liste[j+10*i]) + rednertag(liste[j+10*i])
 				if i == 0 and j == 0:
 					org_text[i] = "<u>" + org_text[i] + "</u>"
 			except IndexError:
@@ -274,6 +276,7 @@ def show_liste():
 	"""set the markers for quotation"""
 	quot_text = "♂/♀" if builder.get_object("geschlecht").get_active() else ""
 	quot_text += " ①" if builder.get_object("erstredner").get_active() else ""
+	quot_text += " <" if builder.get_object("vielredner").get_active() else ""
 	
 	# print the quotation symbols
 	label_quotierung.set_text(quot_text)
