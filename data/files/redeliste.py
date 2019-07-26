@@ -110,6 +110,10 @@ class Handler:
 		show_liste()
 	def on_vielredner_toggled(self, button):
 		show_liste()
+	def on_undo_clicked(self, button):
+		undo()
+	def on_redo_clicked(self, button):
+		redo()
 
 
 # get active redezeit length using some dirty hack
@@ -129,7 +133,8 @@ def next():
 def new_name(name):
 	if not name:
 		return
-	global liste, schon_gesprochen
+	global liste, schon_gesprochen, history
+	snapshoot(liste, schon_gesprochen)
 
 	# catch deletions of names
 	if name[0] == "-":
@@ -181,6 +186,7 @@ def shorten(name):
 # reset everything, clear every list, stop watch (no pun intended)
 def del_all():
 	global liste, sw, schon_gesprochen
+	snapshoot(liste, schon_gesprochen)
 	liste = []
 	schon_gesprochen = []
 	show_liste()
@@ -286,8 +292,48 @@ def show_liste():
 	label_org.set_markup(org_text[0])
 	label_org2.set_markup(org_text[1])
 	label_beam.set_markup(liste_text)
-		
-		
+
+
+# save stuff to be able to undo later
+def snapshoot(liste, schon_gesprochen):
+	global history, historyIndex
+	# look if there is space in list and adjust new list
+	if history.count(None) > 0:
+		hist_pre = history[:historyIndex]
+
+	else:
+		hist_pre = history[1:historyIndex]
+
+	hist_this = [(liste, schon_gesprochen)]
+	hist_post = [None for _ in range(len(history) - historyIndex - 1)]
+	history = hist_pre + hist_this + hist_post
+	historyIndex += 1
+	print(len(history))
+	builder.get_object("redo").set_sensitive(False)
+	builder.get_object("undo").set_sensitive(True)
+
+
+def undo():
+	print("undo")
+	global history, historyIndex, liste, schon_gesprochen
+	if historyIndex > 1:
+		builder.get_object("redo").set_sensitive(True)
+		snapshoot(liste, schon_gesprochen)
+		historyIndex -= 1
+		liste, schon_gesprochen = history[historyIndex -1]
+		if historyIndex == 0:
+			builder.get_object("undo").set_sensitive(False)
+	else:
+		builder.get_object("undo").set_sensitive(False)
+		pass
+
+def redo():
+	print("redo")
+	global history, historyIndex, liste, schon_gesprochen
+	liste, schon_gesprochen = history[historyIndex]
+	historyIndex += 1
+	if historyIndex == len(history) - 1 or all(x == None for x in history[historyIndex:]):
+		builder.get_object("redo").set_sensitive(False)
 
 
 # set up GUI
@@ -301,7 +347,13 @@ builder.connect_signals(Handler())
 # set up important global variables
 liste = []
 schon_gesprochen = []
+history = [None for i in range(5)]
+historyIndex = 0
 redezeit = get_redezeit(builder.get_object("redezeit_länge"))
+
+# disable undo/redo buttons
+for x in ["undo", "redo"]:
+	builder.get_object(x).set_sensitive(False)
 
 # set up main window
 main_window = builder.get_object("redeliste_org")

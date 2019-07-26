@@ -323,6 +323,53 @@ Löscht alle Namen von der Liste, bspw. bei einem Abbruch der Debatte.</property
           </packing>
         </child>
         <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkButton" id="undo">
+                <property name="label" translatable="yes">undo</property>
+                <property name="name">btn_undo</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="tooltip_markup" translatable="yes">&lt;i&gt;CTRL+Z&lt;/i&gt;</property>
+                <property name="hexpand">True</property>
+                <signal name="clicked" handler="on_undo_clicked" swapped="no"/>
+                <accelerator key="z" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="redo">
+                <property name="label" translatable="yes">redo</property>
+                <property name="name">btn_redo</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="tooltip_markup" translatable="yes">&lt;i&gt;CTRL+Y&lt;/i&gt;</property>
+                <property name="hexpand">True</property>
+                <signal name="clicked" handler="on_redo_clicked" swapped="no"/>
+                <accelerator key="y" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">4</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
@@ -331,7 +378,7 @@ Löscht alle Namen von der Liste, bspw. bei einem Abbruch der Debatte.</property
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">4</property>
+            <property name="position">5</property>
           </packing>
         </child>
         <child>
@@ -364,7 +411,7 @@ Löscht alle Namen von der Liste, bspw. bei einem Abbruch der Debatte.</property
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">5</property>
+            <property name="position">6</property>
           </packing>
         </child>
         <child>
@@ -376,7 +423,7 @@ Löscht alle Namen von der Liste, bspw. bei einem Abbruch der Debatte.</property
             <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="padding">4</property>
-            <property name="position">6</property>
+            <property name="position">7</property>
           </packing>
         </child>
         <child>
@@ -411,7 +458,7 @@ ein "&lt;b&gt;-&lt;/b&gt;" vor dem namen eingeben.
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">7</property>
+            <property name="position">8</property>
           </packing>
         </child>
       </object>
