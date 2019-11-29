@@ -4,7 +4,7 @@
 installLoc=/home/$USER/.local/share/redeliste
 
 # create installation folder, if not already existing
-if [! -d $installLoc]; then
+if [[ ! -d $installLoc ]]; then
 	mkdir /home/$USER/.local/share/redeliste
 fi
 
